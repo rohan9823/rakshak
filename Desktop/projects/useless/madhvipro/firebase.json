@@ -1,0 +1,48 @@
+{
+  "hosting": 
+  [{
+      "public": "public",
+      "target": "admin",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {"source": "**",
+        "function": "app"
+        }
+      ]
+    },
+  {
+      "site": "rakshak-hospital-af559",
+      "public": "public",
+      "target": "hosp",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {"source": "**",
+        "function": "hosp"
+        }
+      ]
+    },
+     {
+      "public": "public",
+      "target": "grievance",
+      "rewrites": [
+        {"source": "**",
+        "function": "gre"
+        }
+      ],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**",
+        "**/uploads/**"
+      ]
+    }
+  ]
+}

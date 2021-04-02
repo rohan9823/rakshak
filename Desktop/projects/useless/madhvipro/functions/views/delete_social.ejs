@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title> Delete social</title>
+
+
+   <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.13.0/css/mdb.min.css" rel="stylesheet">
+
+   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap&subset=greek" rel="stylesheet">
+   <style>
+   .font-roboto-1 {
+      font-family: 'Roboto', sans-serif;
+   }
+   
+   table.dataTable thead .sorting:after,
+   table.dataTable thead .sorting:before,
+   table.dataTable thead .sorting_asc:after,
+   table.dataTable thead .sorting_asc:before,
+   table.dataTable thead .sorting_asc_disabled:after,
+   table.dataTable thead .sorting_asc_disabled:before,
+   table.dataTable thead .sorting_desc:after,
+   table.dataTable thead .sorting_desc:before,
+   table.dataTable thead .sorting_desc_disabled:after,
+   table.dataTable thead .sorting_desc_disabled:before {
+      bottom: .5em;
+   }
+
+   body{
+      color: #007bff;
+   }
+   .btn { 
+   margin: 0px;
+    }
+
+    .navbar.navbar-dark .navbar-toggler {
+    color: #5f4d4d;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: #3e2121;
+    -webkit-transition: .35s;
+    transition: .35s;
+    font-size: 15px;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+    color: #3e2121;
+    -webkit-transition: .35s;
+    transition: .35s;
+    font-size: 15px;
+}
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .active {
+    color: #fff;
+    -webkit-transition: .35s;
+    transition: .35s;
+    font-size: 15px;
+}
+   </style>
+</head>
+
+<body>
+
+     <!--Navbar -->
+   <nav class="mb-1 navbar navbar-expand-lg navbar-dark ">
+     <a class="navbar-brand ml-3" href="#"><img src="/images/logo.png" height="44"></a>
+      <div class="container">
+          <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+          aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+        class="fas fa-bars fa-1x"></i></span></button>
+
+         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent-4">
+            <ul class="nav-pills nav navbar-nav mx-auto text-center" >
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Hospital data</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/logged/<%= id %>">Add hospital</a>
+          <a class="dropdown-item"  href="/delete/<%= id %>">Delete hospital</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Social post</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/social_post/<%= id %>">Add social post</a>
+          <a class="dropdown-item"  href="/delete_social/<%= id %>">Delete social post</a>
+        </div>
+      </li>
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Web app</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/webapp/<%= id %>">Add web app</a>
+          <a class="dropdown-item" href="/delete_webapp/<%= id %>">Delete web app</a>
+        </div>
+      </li>  
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Test lab</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/addlab/<%= id %>">Add test lab</a>
+          <a class="dropdown-item" href="/delete_addlab/<%= id %>">Delete test lab</a>
+        </div>
+      </li>
+
+               <li class="nav-item"> <a class="nav-link"  href="/assesment/<%= id %>">Assesment of data</a> </li>
+
+               <li class="nav-item "> <a class="nav-link" href="/hospitalRequest/<%= id%>" >Hospital request</a> </li>
+
+               <li class="nav-item "> <a class="nav-link" href="/get_grievance/<%= id%>" >Grievance data</a> </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item ">
+                  <a class="nav-link">
+                     <h3 class="text-muted"><%= id %></h3> </a>
+               </li>
+               <li class="nav-item ">
+                      <form id="contact-form" method="post" action="/logout" class="text-center">
+                   <button type="submit" class="btn btn-sm mt-3 btn-danger" >log out</button>
+                </form>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!--/.Navbar -->
+   
+   <div class="container mt-5">
+      <div class="row">
+         <div class="col-md"></div>
+         <div class="col-md-10">
+            <div class="tab-content" id="myTabContent">
+               <div class="tab-pane fade show active" id="delete" role="tabpanel" aria-labelledby="office-tab">
+                  <div class="card my-4">
+                     <div class="card-header text-center border-0 py-3">
+                        <p class="m-0 text-muted ">Delete social post</p>
+                     </div>
+                     <div class="card-body px-lg-5 pt-2">
+                        <table id="dtBasicExample" class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
+                           <thead>
+                              <tr>
+                                 <th class="th-sm">Title
+                                 </th>
+
+                                 <th class="th-sm">Description
+                                 </th>
+                                 <th class="th-sm">Delete
+                                 </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                                  <!-- <% console.log(data)%> -->
+                                  <% for(var k in data) { %>  
+                                <tr>
+                                  <form id="contact-form" method="post" action="/delete_social" class="text-center " style="color: #757575;">
+                                    <td><%= data[k].title %></td>
+                                    <!-- <td><%= data[k].link %></td> -->
+                                    <td><%= data[k].description %></td>
+                                    <td><button type="submit" value="submit" class="btn btn-danger btn-sm" >delete</button></td>
+                                     <input type="hidden" name="id" id="id" value="<%= id%>">
+                                      <input type="hidden" name="host" id="host" value="<%= data[k].id%>">
+                                    </form>
+                                 </tr>
+                                 <%  } %>
+                              
+                           </tbody>
+                           <tfoot>
+                              <tr>
+                                 <th>Title
+                                 </th>
+                                 <th>
+                                   Description
+                                 </th>
+                                 <th>
+                                   Delete
+                                 </th>
+                              </tr>
+                           </tfoot>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+            <div class="col-md"></div>
+         </div>
+      </div>
+      <!--Footer-->
+      <footer class="page-footer text-center font-small text-muted  wow fadeIn">
+         <!--Copyright-->
+         <div class="footer-copyright mt-3 py-3"> © 2020 Copyright: <a href=""> helixstack.in </a> </div>
+         <!--/.Copyright-->
+      </footer>
+      <!--/.Footer-->
+
+      <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.13.0/js/mdb.min.js"></script>
+
+      <script type="text/javascript">
+      // Basic example
+      $(document).ready(function() {
+         $('#dtBasicExample').DataTable({
+            "ordering": true // false to disable sorting (or any other option)
+         });
+         $('.dataTables_length').addClass('bs-select');
+      });
+      </script>
+</body>
+
+</html>

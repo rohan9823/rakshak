@@ -1,0 +1,20 @@
+{
+  "projects": {
+    "default": "rakshak-200da"
+  },
+  "targets": {
+    "rakshak-200da": {
+      "hosting": {
+        "admin": [
+          "rakshak-200da"
+        ],
+        "hosp": [
+          "rakshak-hospital-af559"
+        ],
+        "grievance": [
+          "rajasthangrievance-d6dc8"
+        ]
+      }
+    }
+  }
+}

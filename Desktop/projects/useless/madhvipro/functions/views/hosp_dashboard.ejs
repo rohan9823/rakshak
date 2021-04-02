@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title> Dashboard</title>
+
+   <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.13.0/css/mdb.min.css" rel="stylesheet">
+
+   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap&subset=greek" rel="stylesheet">
+   <link type="text/js" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js">
+   <style>
+   .font-roboto-1 {
+      font-family: 'Roboto', sans-serif;
+   }
+   
+   table.dataTable thead .sorting:after,
+   table.dataTable thead .sorting:before,
+   table.dataTable thead .sorting_asc:after,
+   table.dataTable thead .sorting_asc:before,
+   table.dataTable thead .sorting_asc_disabled:after,
+   table.dataTable thead .sorting_asc_disabled:before,
+   table.dataTable thead .sorting_desc:after,
+   table.dataTable thead .sorting_desc:before,
+   table.dataTable thead .sorting_desc_disabled:after,
+   table.dataTable thead .sorting_desc_disabled:before {
+      bottom: .5em;
+   }
+
+   .navbar.navbar-dark .navbar-toggler {
+    color: #5f4d4d;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: #3e2121;
+    -webkit-transition: .35s;
+    transition: .35s;
+    font-size: 15px;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+    color: #3e2121;
+    -webkit-transition: .35s;
+    transition: .35s;
+    font-size: 15px;
+}
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .active {
+    color: #fff;
+    -webkit-transition: .35s;
+    transition: .35s;
+    font-size: 15px;
+}
+   </style>
+</head>
+
+<body>
+   <!--Navbar -->
+   <nav class="mb-1 navbar navbar-expand-lg navbar-dark ">
+     <a class="navbar-brand ml-3" href="#"><img src="/images/logo.png" height="44"></a>
+      <div class="container">
+          <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+        class="fas fa-bars fa-1x"></i></span></button>
+
+         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent-4">
+            <ul class="nav-pills nav navbar-nav mx-auto text-center" >
+
+              <li class="nav-item"> <a class="nav-link active" href="#" > Hospital data</a> </li>
+
+                 <li class="nav-item "> <a class="nav-link " href="/add_patient" >Add Patient</a> </li>
+
+               <li class="nav-item "> <a class="nav-link " href="/update_patient" >Update Patient data</a> </li>
+
+               <li class="nav-item"> <a class="nav-link"   href="/update_hosp" aria-selected="false">Update hospital data</a> </li>           
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item ">
+                  <a class="nav-link">
+                     <h3 class="text-muted"><%= id %></h3> </a>
+               </li>
+               <li class="nav-item ">
+                      <form id="contact-form" method="post" action="/hosp_logout" class="text-center">
+                   <button type="submit" class="btn btn-sm mt-3 btn-danger" >log out</button>
+                </form>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!--/.Navbar -->
+   <div class="container mt-5">
+      <div class="row">
+         <div class="col-md-4 mt-5">
+           <div class="card">
+                  <div class="card-header text-center border-0 py-3">
+                     <p class="m-0 text-muted ">Name of Hospital</p>
+                  </div>
+                  <div class="card-body px-lg-5 pt-2 text-center">
+                    <h5> <%= data.name%></h5>
+                  </div>
+               </div>
+         </div>
+
+         <div class="col-md-4 mt-5">
+             <div class="card">
+                  <div class="card-header text-center border-0 py-3">
+                     <p class="m-0 text-muted ">Type of Hospital</p>
+                  </div>
+                  <div class="card-body px-lg-5 pt-2 text-center">
+                    <h5> <%= data.type%></h5>
+                  </div>
+               </div>
+         </div>
+
+            <div class="col-md-4 mt-5">
+
+              <div class="card">
+                  <div class="card-header text-center border-0 py-3">
+                     <p class="m-0 text-muted ">Total no. of beds</p>
+                  </div>
+                  <div class="card-body px-lg-5 pt-2 text-center">
+                    <h5> <%= data.beds%></h5>
+                  </div>
+               </div>
+
+            </div>
+
+            <div class="col-md-4 mt-5">
+                <div class="card">
+                  <div class="card-header text-center border-0 py-3">
+                     <p class="m-0 text-muted ">Address of Hospital</p>
+                  </div>
+                  <div class="card-body px-lg-5 pt-2 text-center">
+                    <h5> <%= data.address%></h5>
+                  </div>
+                </div>
+
+            </div>
+
+         </div>
+      </div>
+
+      <!--Footer-->
+      <footer class="page-footer text-center font-small text-muted  wow fadeIn">
+         <!--Copyright-->
+         <div class="footer-copyright mt-3 py-3"> © 2020 Copyright: <a href=""> helixstack.in </a> </div>
+         <!--/.Copyright-->
+      </footer>
+      <!--/.Footer-->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+      
+
+      <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.13.0/js/mdb.min.js"></script>
+
+
+      <script type="text/javascript">
+      // Basic example
+      $(document).ready(function() {
+         $('#dtBasicExample').DataTable({
+            "ordering": true // false to disable sorting (or any other option)
+         });
+         $('.dataTables_length').addClass('bs-select');
+      });
+      </script>
+
+      <script type="text/javascript">
+         
+         // Wait for the DOM to be ready
+$(function() {
+
+   $("form[name='add']").validate({
+    rules: {
+      name: "required",
+      beds: "required",
+      area: "required",
+      district: "required",
+      state: "required"
+      mname: "required",
+      mbeds: "required",
+      marea: "required",
+      mdistrict: "required",
+      mstate: "required"
+    },
+    messages: {
+      name: "Please enter name",
+      beds: "Please enter beds",
+      area: "Please enter area",
+      district: "Please enter district",
+      state: "Please ente stater"
+      mname: "Please enter mname",
+      mbeds: "Please enter mbeds",
+      marea: "Please enter marea",
+      mdistrict: "Please enter mdistrict",
+      mstate: "Please ente mstater"
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+
+
+});
+
+      </script>
+
+</body>
+
+</html>
